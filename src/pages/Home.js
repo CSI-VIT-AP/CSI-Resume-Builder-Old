@@ -1,3 +1,5 @@
+import { Box } from '@mui/material';
+import { Container } from '@mui/system';
 import React from 'react'
 import Navbar from '../components/Navbar';
 // import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -24,7 +26,11 @@ import Navbar from '../components/Navbar';
 const Home = () => {
     return ( 
         <>
-            <Navbar/>
+       
+        <Box>
+        <Navbar/>
+
+        </Box>
 
         </>
         // <ThemeProvider theme={theme}>
