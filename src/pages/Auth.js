@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -10,6 +9,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import logo from './logo.png'
+import bgimg from '../static/images/authimage.jpg'
 
 function Copyright(props) {
   return (
@@ -62,7 +62,7 @@ export default function SignInSide() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/b86c/d25d/d537ba27bbfd05063c6288ef85a45be8?Expires=1673827200&Signature=latmpkF4aHPFHs1g0eszgbeA~ajXGG0SQcI~eStzH4cwMECnQFfXi6wc9iwMoTlWShlKASZsADV0DYyrLjc-OSW4OeXxrjViEHdeUxLZ2WIJpYLK9Z07xnAKfCne3EGtaVt9y5HWlf8nWtk8nsJ6kHa9c4IFjIxBq3xc0Fwl0Sd2Bxv6vLFhRQVPHAUBFOD1ZCOAAiK6SZ5vy1X3s0jHUwFJYlAN5GsyTVotJ5YT6aa49BJU-Xr4jQU1q8ESOF-Rpdsh2exEMw4LW7x6enHhQwowOAAi3rR-JnotRtow8LB8R5Bwbv0VnsMf-wRQ~jH0vFl2B6hZliAaA6Et-NSLhg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4)',
+            backgroundImage: `url(${bgimg})`,
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -80,7 +80,7 @@ export default function SignInSide() {
               alignItems: 'center',
             }}
           >
-              <img src={logo} width="20%"/>
+              <img src={logo} width="20%" alt ="club logo"/>
             <Typography component="h1" variant="h4" gutterBottom sx={{fontWeight: 600}}>
               Resume Builder
             </Typography>

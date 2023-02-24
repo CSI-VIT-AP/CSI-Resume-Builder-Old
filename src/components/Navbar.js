@@ -39,13 +39,14 @@ function ResponsiveAppBar() {
     <AppBar position="static" sx={{backgroundColor: "#111727"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img src={logo} width="5%"/>
+          <img src={logo} width= "5%" alt = "a person wrintg something on oard" />
           <Typography
             variant="h6"
             noWrap
             component="a"
             href="#"
             sx={{
+              lineHeight: 1.2,
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'roboto',
@@ -95,6 +96,7 @@ function ResponsiveAppBar() {
             </Menu>
             
           </Box>
+
           <Typography
             variant="h5"
             noWrap
@@ -111,12 +113,12 @@ function ResponsiveAppBar() {
           >
             CSI-VITAP
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'white', display: 'block', mr: 6, ml:-3 }}
               >
                 {page}
               </Button>

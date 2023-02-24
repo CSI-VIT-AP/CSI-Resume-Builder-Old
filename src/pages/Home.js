@@ -1,26 +1,7 @@
-import { Box } from '@mui/material';
-import { Container } from '@mui/system';
+import { Box, Grid } from '@mui/material';
 import React from 'react'
 import Navbar from '../components/Navbar';
-// import { ThemeProvider, createTheme } from '@mui/material/styles';
-
-// const theme = createTheme({
-//     palette:{
-//         primary: {
-//             main:  '#BAFE66'
-
-//         },
-//         secondary:{
-//             main: "#111727"
-//         },
-//         typography: {
-//             body1: {
-//               fontWeight: 600 // or 'bold'
-//             }
-//           }
-        
-//     }
-// });
+import ProgressBar from '../components/ProgressBar';
 
 
 const Home = () => {
@@ -29,9 +10,10 @@ const Home = () => {
        
         <Box>
         <Navbar/>
-
         </Box>
-
+        <Grid>
+            <ProgressBar/>
+        </Grid>
         </>
         // <ThemeProvider theme={theme}>
         // </ThemeProvider>
