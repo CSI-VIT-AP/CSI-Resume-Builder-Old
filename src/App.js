@@ -2,6 +2,7 @@ import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Auth from './pages/Auth';
 import Home from './pages/Home';
+import PersonalInfo from './pages/PersonalInfo';
 
 function App() {
   return (
@@ -11,6 +12,9 @@ function App() {
       </Route>
       <Route  path="/Home" exact>
         <Home/>
+      </Route>
+      <Route  path="/PersonalInfo" exact>
+        <PersonalInfo/>
       </Route>
     </Router>
   );
