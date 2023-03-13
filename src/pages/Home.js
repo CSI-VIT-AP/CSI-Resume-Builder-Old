@@ -11,8 +11,14 @@ const Home = () => {
         <Box>
         <Navbar/>
         </Box>
-        <Grid>
-            <ProgressBar/>
+        <Grid container my={4}>
+            <Grid item xs= {3}>
+                <ProgressBar/>
+            </Grid>
+            <Grid item xs={9}>
+
+            </Grid>
+
         </Grid>
         </>
         // <ThemeProvider theme={theme}>
