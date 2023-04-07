@@ -86,7 +86,7 @@ export default function SignInSide() {
 
   }
 
-  const signUpHnadler = (e) => {
+  const signUpHandler = (e) => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, data.email, data.password)
   .then((userCredential) => {
@@ -181,7 +181,7 @@ export default function SignInSide() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
-                onClick={signUpHnadler}
+                onClick={signUpHandler}
               >
                 Sign In
               </Button>
