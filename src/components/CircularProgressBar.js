@@ -14,8 +14,10 @@ function CircularProgressBar() {
   };
 
   return (
+
+    <>
     <Box sx={{ position: "relative", display: "inline-flex" }}>
-      <CircularProgress variant="determinate" value={progress} />
+      <CircularProgress variant="determinate" value={progress} size={250} />
       <Box
         sx={{
           top: 0,
@@ -28,12 +30,13 @@ function CircularProgressBar() {
           position: "absolute",
         }}
       >
-        <Typography variant="caption" component="div" color="text.secondary">
+        <Typography variant="h3" component="div" color="text.secondary">
           {`${Math.round(progress)}%`}
         </Typography>
       </Box>
-      <Button onClick={handleButtonClick}>Increase Progress</Button>
     </Box>
+      <Button onClick={handleButtonClick}>Increase Progress</Button>
+</>
   );
 }
 
