@@ -10,6 +10,10 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import logo from './logo.png'
 import bgimg from '../static/images/authimage.jpg'
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {auth} from "../firebase"
 
 function Copyright(props) {
   return (
@@ -43,14 +47,75 @@ const theme = createTheme({
 });
 
 export default function SignInSide() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+  const [data,setData] = React.useState({
+    email:"",
+    password:""
+  })
+  
+  const handleInput = (e) =>{
+    setData({
+      ...data,
+      [e.target.name]:e.target.value
+    })
+  }
+
+
+  const provider = new GoogleAuthProvider();
+  const googleSignIn = () =>{
+    signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    // IdP data available using getAdditionalUserInfo(result)
+    console.log(token,user);
+    // ...
+  }).catch((error) => {
+    console.log(error)
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
+
+  }
+
+  const signUpHandler = (e) => {
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth, data.email, data.password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+    console.log(user)
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(error)
+  });
+  }
+
+ const signInHanlder = () =>{
+  signInWithEmailAndPassword(auth, data.email, data.password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.user(userCredential)
+    // ...
+  })
+  .catch((error) => {
+    console.log(error)
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+ }
 
   return (
     <ThemeProvider theme={theme}>
@@ -87,7 +152,7 @@ export default function SignInSide() {
             <Typography component="h2" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate  sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
@@ -97,6 +162,7 @@ export default function SignInSide() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={handleInput}
               />
               <TextField
                 margin="normal"
@@ -107,6 +173,7 @@ export default function SignInSide() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={handleInput}
               />
         
               <Button
@@ -114,8 +181,18 @@ export default function SignInSide() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                onClick={signUpHandler}
               >
                 Sign In
+              </Button>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                onClick={googleSignIn}
+              >
+                Sign In with google
               </Button>
               <Grid container>
                 <Grid item xs>
