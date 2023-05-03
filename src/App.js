@@ -4,6 +4,7 @@ import Auth from './pages/Auth';
 import Home from './pages/Home';
 import PersonalInfo from './pages/PersonalInfo';
 import CircularProgresss from './components/CircularProgresss';
+import Education from './pages/Education';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/Home" element={<Home />} />
         <Route path="/PersonalInfo" element={<PersonalInfo />} />
         <Route path="/circular" element={<CircularProgresss />} />
+        <Route path="/education" element={<Education/>} />
       </Routes>
     </Router>
   );
